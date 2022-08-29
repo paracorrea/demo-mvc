@@ -2,30 +2,33 @@ package com.flc.curso.thymleafy.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flc.curso.thymleafy.dao.DepartamentoDao;
 import com.flc.curso.thymleafy.domain.Departamento;
 
-@Service @Transactional(readOnly = false)
+@Service 
 public class DepartamentoServiceImpl implements DepartamentoService {
 
-	
+	@Autowired
 	private DepartamentoDao dao;
+	
 	@Override
+	@Transactional(readOnly = false)
 	public void salvar(Departamento departamento) {
 		dao.save(departamento);
 		
 	}
 
-	@Override
+	@Override @Transactional(readOnly = false)
 	public void editar(Departamento departamento) {
 		dao.update(departamento);
 		
 	}
 
-	@Override
+	@Override @Transactional(readOnly = false)
 	public void excluir(Long id) {
 		dao.delete(id);
 		
