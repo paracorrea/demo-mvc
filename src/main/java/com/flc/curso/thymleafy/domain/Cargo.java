@@ -1,15 +1,18 @@
 package com.flc.curso.thymleafy.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "CARGOS")
-public abstract class Cargo extends AbstractEntity<Long> {
+public class Cargo extends AbstractEntity<Long> {
 
 	@Column(name ="nome", nullable = false, unique = true, length = 60)
 	private String nome;
@@ -21,6 +24,9 @@ public abstract class Cargo extends AbstractEntity<Long> {
 	public String getNome() {
 		return nome;
 	}
+	
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionario;
 
 	public void setNome(String nome) {
 		this.nome = nome;
