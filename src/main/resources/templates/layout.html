@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-				xmlns:th="http://www.thymeleaf.org"
-				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">>
-
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<title>Spring-Boot Básico</title>
 	<meta charset="UTF-8" />
@@ -19,27 +18,26 @@
 	<!-- Custom styles for this template -->
 	<link href="/css/style.css" rel="stylesheet" />
 </head>
-
 <body>
-	<header th:replace="/fragments/header :: cabecalho">
+	<header th:replace="fragments/header :: cabecalho">
 		<div>header</div>
 	</header>
 	
-	<div class="layout-main">
+	<div  class="layout-main">
 		<aside>
-			<nav th:replace="/fragments/sidebar :: nav-sidebar">
+			<nav th:replace="fragments/sidebar :: nav-sidebar">
 				<span>menu</span>
-			</nav>	
+			</nav>
 		</aside>
+		
 		<section layout:fragment="corpo">
-			<div>conteudo principal das páginas</div>	
+			<div>conteudo principal das páginas</div>
 		</section>
 	</div>
 	
 	<footer th:replace="fragments/footer :: rodape">
 		<div>footer</div>
-	</footer>	
-	
+	</footer>
 	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -49,6 +47,16 @@
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+		var url = '';
+		
+		$('button[id*="btn_"]').click(function() {
+			url = "http://localhost:8080/" + $(this).attr('id').split("_")[1];
+		});
+		
+		$('#ok_confirm').click(function() {
+			document.location.href = url;
+		});
 	    
 		$(function() {
 			$('[data-toggle="popover"]').popover();
@@ -61,9 +69,5 @@
 		});
 
 	</script>
-		
-			
-	
-<body>
-
+</body>
 </html>
