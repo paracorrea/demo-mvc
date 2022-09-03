@@ -65,4 +65,18 @@ public class CargoController {
 	public List<Departamento> listaDepartamentos() {
 		return departamentoService.buscarTodos();
 	}
+	
+	@GetMapping("/excluir/{id}")
+	public String excluir(@PathVariable("id") Long id, ModelMap model) {
+		
+		if (cargoService.cargoTemFuncionarios(id)) {
+			model.addAttribute("fail", "Departamento não removido. Possui funcionario(s) vinculado(s)");
+		} else {
+			cargoService.excluir(id);
+			model.addAttribute("success", "Cargo excluido com sucesso");
+		}
+				
+		return "redirect:/cargos/listar";
+	}
+	
 }
