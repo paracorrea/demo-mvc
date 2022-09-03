@@ -24,6 +24,10 @@
 	        </nav>
 	
 	        <div class="container" id="listagem">
+	        
+	        <div th:replace="fragments/alert"></div>
+	        
+	        
 	            <div class="table-responsive">
 	                <table class="table table-striped table-hover table-sm">
 	                    <thead>
@@ -35,12 +39,12 @@
 	                    </tr>
 	                    </thead>
 	                    <tbody>
-	                    <tr th:each="c : ${cargo}">
-	                        <td th:text="${c.id}">11</td>
-	                        <td>Psicologo</td>
-	                        <td>Recursos Humanos</td>
+	                    <tr th:each="c : ${cargos}">
+	                        <td th:text="${c.id}">1</td>
+	                        <td th:text="${c.nome}">Psicologo</td>
+	                        <td th:text="${c.departamento.nome}">Recursos Humanos</td>
 	                        <td colspan="2">
-	                            <a class="btn btn-info btn-sm" href="/cargos/editar/11" role="button">
+	                            <a class="btn btn-info btn-sm" th:href="@{/cargos/editar/{id} (id=${c.id})}" role="button">
 	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 	                            </a>
 	                            <button type="button" class="btn btn-danger btn-sm" >
