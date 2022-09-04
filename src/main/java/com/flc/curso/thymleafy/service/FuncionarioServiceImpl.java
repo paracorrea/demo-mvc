@@ -46,6 +46,16 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 		return dao.findAll();
 	}
 
+	@Override
+	public boolean funcionarioTemCargo(Long id) {
+		
+		/*
+		 * if (buscarPorId(id).getCargo()) { return false; } return true;
+		 */
+		return false;
+		
+			}
+
 	
 	
 }
