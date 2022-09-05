@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.flc.curso.thymleafy.domain.Cargo;
@@ -57,6 +58,13 @@ public class FuncionarioController {
 		funcionarioService.editar(funcionario);
 		attr.addFlashAttribute("success", "Funcionario editado com sucesso");
 		return "redirect:/funcionarios/cadastrar";
+	}
+	
+	@GetMapping("/buscar/nome")
+	public String getPorNome(@RequestParam("nome") String nome, ModelMap model) {
+		
+		model.addAttribute("funcionarios", funcionarioService.BuscarPorNome(nome));
+		return "/funcionario/lista";
 	}
 
 	@ModelAttribute("cargos")

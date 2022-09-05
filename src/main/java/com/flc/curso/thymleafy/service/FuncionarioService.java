@@ -18,5 +18,7 @@ public interface FuncionarioService {
 	List<Funcionario> buscarTodos();
 	
 	boolean funcionarioTemCargo(Long id);
+
+	List<Funcionario> BuscarPorNome(String nome);
 }
 
