@@ -70,6 +70,7 @@ public class FuncionarioController {
 	@ModelAttribute("ufs")
 	public UF[] getUFs() {
 			return UF.values();
+			
 	}
 	/*
 	 * @GetMapping("/excluir/{id}") public String excluir(@PathVariable("id") Long
