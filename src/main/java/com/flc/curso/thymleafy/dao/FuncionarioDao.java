@@ -1,5 +1,6 @@
 package com.flc.curso.thymleafy.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -18,4 +19,12 @@ public interface FuncionarioDao {
 	List<Funcionario> findAll();
 
 	List<Funcionario> findByNome(String nome);
+
+	List<Funcionario> findByCargo(Long id);
+
+	List<Funcionario> findByDataEntradaSaida(LocalDate entrada, LocalDate saida);
+
+	List<Funcionario> findByDataEntrada(LocalDate entrada);
+
+	List<Funcionario> findaByDataSaida(LocalDate saida);
 }
