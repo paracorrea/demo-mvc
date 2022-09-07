@@ -84,7 +84,8 @@
 	                    <div class="form-group col-md-6">
 	                        <label for="logradouro">Logradouro</label>
 	                        <input type="text" class="form-control" id="logradouro" placeholder="logradouro sem número"
-	                               th:field="*{endereco.logradouro}" th:classappend="${#fields.hasErrors('endereco.logradouro')} ? 'is-invalid'" />
+	                               th:field="*{endereco.logradouro}" 
+	                               th:classappend="${#fields.hasErrors('endereco.logradouro')} ? 'is-invalid'" />
 	                        <div class="invalid-feedback">
 										<span th:errors ="*{endereco.logradouro}"></span>
 	                        </div>
@@ -93,16 +94,17 @@
 	                <div class="form-row">
 	                    <div class="form-group col-md-6">
 	                        <label for="numero">Número</label>
-	                        <input type="text" class="form-control" id="numero" th:field="*{endereco.numero}" th:classappend="${#fields.hasErrors('endereco.numero')} ? 'is-invalid'" />
-	                        <div class="invalid-feedback"></div>	
-	                        <span th:errors ="*{endereco.numero}"></span>
+	                        <input type="text" class="form-control" id="numero" th:field="*{endereco.numero}"
+	                         th:classappend="${#fields.hasErrors('endereco.numero')} ? 'is-invalid'" />
+	                        <div class="invalid-feedback">	
+	                        <span th:errors ="*{endereco.numero}"></span></div>
 	                    </div>
 	                    <div class="form-group col-md-6">
 	                        <label for="complemento">Complemento</label>
 	                        <input type="text" class="form-control" id="complemento" placeholder="fundos, casa, AP. 102, .."
 	                               th:field="*{endereco.complemento}" th:classappend="${#fields.hasErrors('endereco.complemento')} ? 'is-invalid'" />
-	                        <div class="invalid-feedback"></div>
-	                     	     <span th:errors ="*{endereco.complemento}"></span>   
+	                        <div class="invalid-feedback">
+	                     	     <span th:errors ="*{endereco.complemento}"></span>   </div>
 	                        
 	                    </div>
 	                </div>
@@ -110,8 +112,8 @@
 	                    <div class="form-group col-md-6">
 	                        <label for="bairro">Bairro</label>
 	                        <input type="text" class="form-control" id="bairro" th:field="*{endereco.bairro}" th:classappend="${#fields.hasErrors('endereco.bairro')} ? 'is-invalid'" />
-	                        <div class="invalid-feedback"></div>
-	                        	   <span th:errors ="*{endereco.bairro}"></span>   
+	                        <div class="invalid-feedback">
+	                        	   <span th:errors ="*{endereco.bairro}"></span>  </div> 
 	                    </div>
 	                    <div class="form-group col-md-4">
 	                        <label for="uf">UF</label>
@@ -121,14 +123,14 @@
 	                            		th:value="${uf}" 
 	                            		th:text="${uf.sigla}">SP</option>
 	                        </select>
-	                        <div class="invalid-feedback"></div>
-	                         <span th:errors ="*{endereco.uf}"></span>   
+	                        <div class="invalid-feedback">
+	                         <span th:errors ="*{endereco.uf}"></span>   </div>
 	                    </div>
 	                    <div class="form-group col-md-2">
 	                        <label for="cep">Cep</label>
 	                        <input type="text" class="form-control" id="cep" data-mask="00000-000" th:field="*{endereco.cep}" th:classappend="${#fields.hasErrors('endereco.cep')} ? 'is-invalid'"/>
-	                        <div class="invalid-feedback"></div>
-	                         	   <span th:errors ="*{endereco.cep}"></span>   
+	                        <div class="invalid-feedback">
+	                         	   <span th:errors ="*{endereco.cep}"></span>   </div>
 	                    </div>
 	                </div>
 	                	<input type="hidden" id="id" th:field="*{id}" />
