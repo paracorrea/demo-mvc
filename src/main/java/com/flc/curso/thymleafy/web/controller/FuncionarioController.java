@@ -39,6 +39,7 @@ public class FuncionarioController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+			
 		binder.addValidators(new FuncionarioValidator());
 	}
 
@@ -56,14 +57,26 @@ public class FuncionarioController {
 	@PostMapping("/salvar")
 	public String salvar(@Valid Funcionario funcionario,BindingResult result, RedirectAttributes attr) {
 		
-		if (result.hasErrors()) {
+		String nome = funcionario.getNome();
+		List<Funcionario> funcionarios = funcionarioService.BuscarPorNome(nome);  
+		
+		if (funcionarios.size() > 0 ) {
+			attr.addFlashAttribute("fail", "Funcionario já existe no banco de dados");
+			return "redirect:/funcionarios/cadastrar";
+		} else {
+			
+			if (result.hasErrors()) {
 			return "/funcionario/cadastro";
+		} else  {
+			attr.addFlashAttribute("success", "Funcionario cadastrado com sucesso");
+			funcionarioService.salvar(funcionario);
+			return "redirect:/funcionarios/cadastrar";
 		}
+		}
+	
 		
 		
-		funcionarioService.salvar(funcionario);
-		attr.addFlashAttribute("success", "Funcionario cadastrado com sucesso");
-		return "redirect:/funcionarios/cadastrar";
+
 	}
 
 	@GetMapping("/editar/{id}")
