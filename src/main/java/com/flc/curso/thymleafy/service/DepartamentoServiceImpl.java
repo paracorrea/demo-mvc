@@ -53,6 +53,11 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 		}
 		return true;
 	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Departamento> buscarPorNome(String nome) {
+		return dao.findByName(nome);
+	}
 	
 
 }

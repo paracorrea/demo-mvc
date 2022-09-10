@@ -15,6 +15,8 @@ public interface CargoService {
 	Cargo buscarPorId(Long id);
 	
 	List<Cargo> buscarTodos();
+	
+	List<Cargo> buscarPorNome(String nome);
 
 	boolean cargoTemFuncionarios(Long id);
 	

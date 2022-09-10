@@ -36,11 +36,13 @@ public class FuncionarioController {
 
 	@Autowired
 	private CargoService cargoService;
+
+
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 			
-		binder.addValidators(new FuncionarioValidator());
+		binder.addValidators(new FuncionarioValidator(funcionarioService));
 	}
 
 	@GetMapping("/cadastrar")
@@ -57,27 +59,22 @@ public class FuncionarioController {
 	@PostMapping("/salvar")
 	public String salvar(@Valid Funcionario funcionario,BindingResult result, RedirectAttributes attr) {
 		
-		String nome = funcionario.getNome();
-		List<Funcionario> funcionarios = funcionarioService.BuscarPorNome(nome);  
-		
-		if (funcionarios.size() > 0 ) {
-			attr.addFlashAttribute("fail", "Funcionario já existe no banco de dados");
-			return "redirect:/funcionarios/cadastrar";
-		} else {
+			
 			
 			if (result.hasErrors()) {
 			return "/funcionario/cadastro";
-		} else  {
+			}
+		
 			attr.addFlashAttribute("success", "Funcionario cadastrado com sucesso");
 			funcionarioService.salvar(funcionario);
 			return "redirect:/funcionarios/cadastrar";
 		}
-		}
+		
 	
 		
 		
 
-	}
+
 
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
